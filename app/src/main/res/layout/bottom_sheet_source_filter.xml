@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="4dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:orientation="vertical">
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="50dp"
+        android:layout_height="6dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/search_background" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="Filter by source"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/grey"
+        android:paddingTop="16dp"
+        />
+
+
+    <CheckBox
+        android:id="@+id/cbAbc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ABC News"
+        android:tag="abc-news"
+        />
+
+    <CheckBox
+        android:id="@+id/cbBild"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bild"
+        android:tag="bild"
+        />
+
+    <CheckBox
+        android:id="@+id/cbTOI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Times of India"
+        android:tag="the-times-of-india"
+        />
+
+    <CheckBox
+        android:id="@+id/cbTalkSport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TalkSport"
+        android:tag="talksport"/>
+
+    <Button
+        android:id="@+id/btnApply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:background="@color/background"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:text="Apply Filter"
+        android:textAllCaps="false" />
+</LinearLayout>
