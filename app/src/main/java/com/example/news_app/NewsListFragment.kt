@@ -25,6 +25,7 @@ class NewsListFragment : Fragment(),NewsItemClickListener {
     private val TAG:String = "NewsList Fragment"
     private lateinit var newsListAdapter: NewsListAdapter
     private var selectedCountryCode= "in"
+    private var rbSelectedCountyId = R.id.rbIndia
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -83,10 +84,13 @@ class NewsListFragment : Fragment(),NewsItemClickListener {
         bottomSheet.show()
         val btnApply = bottomSheet.findViewById<Button>(R.id.btnApply)
         val rgCountry = bottomSheet.findViewById<RadioGroup>(R.id.rgCountry)
+        val rbSelectedCountry = bottomSheet.findViewById<RadioButton>(rbSelectedCountyId)
+        rbSelectedCountry?.isChecked = true
         btnApply?.setOnClickListener{
             val rgSelectedCountry =  rgCountry?.checkedRadioButtonId
             val radioButton = bottomSheet.findViewById<RadioButton>(rgSelectedCountry!!)
             bottomSheet.hide()
+            rbSelectedCountyId = rgSelectedCountry
             binding.tvCountry.text = radioButton!!.text
             selectedCountryCode = radioButton.tag!!.toString()
             getNews()
