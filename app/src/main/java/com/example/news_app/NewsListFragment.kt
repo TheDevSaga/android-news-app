@@ -1,6 +1,7 @@
 package com.example.news_app
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.news_app.adapters.NewsListAdapter
 import com.example.news_app.data.RetrofitInstance
 import com.example.news_app.databinding.BottomSheetSourceFilterBinding
@@ -18,6 +20,7 @@ import com.example.news_app.databinding.FragmentNewsListBinding
 import com.example.news_app.interfaces.NewsItemClickListener
 import com.example.news_app.models.Article
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import kotlin.math.ceil
 
 
 class NewsListFragment : Fragment(), NewsItemClickListener {
@@ -28,6 +31,8 @@ class NewsListFragment : Fragment(), NewsItemClickListener {
     private var rbSelectedCountyId = R.id.rbIndia
     private val sourceList:MutableList<String> =ArrayList()
     private var page = 1
+    private var totalPage =1
+    var loadingNext = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,19 +72,56 @@ class NewsListFragment : Fragment(), NewsItemClickListener {
         binding.fabSourceFilter.setOnClickListener {
             showSourceFilterBottomSheet()
         }
+        binding.rvNewsList.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if(!recyclerView.canScrollVertically(1)){
+                    if(page<totalPage&& !loadingNext){
+
+                        page++;
+                        getNextNews();
+                    }
+                }
+            }
+
+        })
     }
 
     private fun getNews() {
         lifecycleScope.launchWhenStarted {
             val response = try {
-                if(sourceList.isEmpty()) RetrofitInstance.api.getTopHeadLines(country = selectedCountryCode) else RetrofitInstance.api.getFilteredTopHeadLines(sources = sourceList.joinToString())
+                showLoader()
+                page = 1
+                if(sourceList.isEmpty()) RetrofitInstance.api.getTopHeadLines(country = selectedCountryCode,page= page) else RetrofitInstance.api.getFilteredTopHeadLines(sources = sourceList.joinToString(),page = 1)
+
+            } catch (e: Exception) {
+                Log.e(TAG, e.toString())
+                return@launchWhenStarted
+            }
+            if (response.isSuccessful && response.body() != null) {
+                totalPage = ceil(response.body()!!.totalResults/20.0).toInt()
+                newsListAdapter.articleList.clear()
+                newsListAdapter.articleList.addAll(response.body()!!.articles.toMutableList())
+                binding.progressBar.visibility = View.GONE
+                newsListAdapter.loadNext = page<totalPage
+                newsListAdapter.notifyDataSetChanged()
+                hideLoader()
+            }
+        }
+    }
+    private fun getNextNews() {
+        lifecycleScope.launchWhenStarted {
+            val response = try {
+                loadingNext = true
+                if(sourceList.isEmpty()) RetrofitInstance.api.getTopHeadLines(country = selectedCountryCode,page= page) else RetrofitInstance.api.getFilteredTopHeadLines(sources = sourceList.joinToString(),page = page)
             } catch (e: Exception) {
                 return@launchWhenStarted
             }
             if (response.isSuccessful && response.body() != null) {
-                newsListAdapter.articleList = response.body()!!.articles
-                binding.progressBar.visibility = View.GONE
+                totalPage = ceil(response.body()!!.totalResults/20.0).toInt()
+                newsListAdapter.articleList.addAll(response.body()!!.articles)
+                newsListAdapter.loadNext = page<totalPage
                 newsListAdapter.notifyDataSetChanged()
+                loadingNext =false
             }
         }
     }
@@ -132,6 +174,14 @@ class NewsListFragment : Fragment(), NewsItemClickListener {
             bottomSheet.hide()
             getNews()
         }
+    }
+    private fun showLoader(){
+        binding.rvNewsList.visibility = View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+    }
+    private fun hideLoader(){
+        binding.rvNewsList.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.GONE
     }
 
 }

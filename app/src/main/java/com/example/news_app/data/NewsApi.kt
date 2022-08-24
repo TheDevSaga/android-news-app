@@ -7,9 +7,9 @@ import retrofit2.http.Query
 
 interface NewsApi {
     @GET("/v2/top-headlines")
-    suspend fun getTopHeadLines(@Query("country") country:String ="in",@Query ("apiKey") key :String = "054851f4b1c94dde957ce22e15de1fdd"): Response<NewsResponse>
+    suspend fun getTopHeadLines(@Query("country") country:String ="in", @Query("page") page:Int,@Query ("apiKey") key :String = "054851f4b1c94dde957ce22e15de1fdd"): Response<NewsResponse>
    @GET("/v2/top-headlines")
-    suspend fun getFilteredTopHeadLines(@Query("sources") sources:String,@Query ("apiKey",) key :String = "054851f4b1c94dde957ce22e15de1fdd"): Response<NewsResponse>
+    suspend fun getFilteredTopHeadLines(@Query("sources") sources:String,@Query("page") page:Int,@Query ("apiKey") key :String = "054851f4b1c94dde957ce22e15de1fdd"): Response<NewsResponse>
     @GET("/v2/top-headlines")
-    suspend fun getSearchNes(@Query("q") searchText:String,@Query ("apiKey",) key :String = "054851f4b1c94dde957ce22e15de1fdd"): Response<NewsResponse>
+    suspend fun getSearchNes(@Query("q") searchText:String,@Query ("apiKey") key :String = "054851f4b1c94dde957ce22e15de1fdd"): Response<NewsResponse>
 }
