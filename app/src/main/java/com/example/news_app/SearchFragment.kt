@@ -72,7 +72,7 @@ class SearchFragment : Fragment(),NewsItemClickListener{
                 return@launchWhenStarted
             }
             if(response.isSuccessful && response.body()!=null){
-                newsListAdapter.articleList = response.body()!!.articles
+                newsListAdapter.articleList = response.body()!!.articles.toMutableList()
                 newsListAdapter.notifyDataSetChanged()
                 if(newsListAdapter.articleList.isEmpty()){
                     binding.rvNewsList.visibility = View.GONE
