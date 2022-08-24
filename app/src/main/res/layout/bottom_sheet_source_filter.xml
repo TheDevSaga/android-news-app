@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
-        android:text="Filter by source"
+        android:text="@string/filter_by_source"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
         android:id="@+id/cbAbc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ABC News"
+        android:text="@string/abc_news"
         android:tag="abc-news"
         />
 
@@ -46,7 +46,7 @@
         android:id="@+id/cbBild"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bild"
+        android:text="@string/bild"
         android:tag="bild"
         />
 
@@ -54,7 +54,7 @@
         android:id="@+id/cbTOI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Times of India"
+        android:text="@string/times_of_india"
         android:tag="the-times-of-india"
         />
 
@@ -62,7 +62,7 @@
         android:id="@+id/cbTalkSport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TalkSport"
+        android:text="@string/talksport"
         android:tag="talksport"/>
 
     <Button
@@ -74,6 +74,6 @@
         android:background="@color/background"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
-        android:text="Apply Filter"
+        android:text="@string/apply_filter"
         android:textAllCaps="false" />
 </LinearLayout>
