@@ -28,7 +28,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MyNews"
+                android:text="@string/mynews"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -40,13 +40,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
-                android:text="Location"
+                android:text="@string/location"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:importantForAccessibility="no"
                 android:id="@+id/imageView2"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
@@ -59,7 +60,7 @@
                 android:id="@+id/tvCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="India"
+                android:text="@string/india"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/textView6"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -79,13 +80,14 @@
         android:drawableEnd="@drawable/ic_search"
         android:ems="10"
         android:enabled="false"
-        android:hint="Search for news, topics..."
+        android:hint="@string/search_hint"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar"
+        android:importantForAutofill="no" />
 
     <View
         android:id="@+id/btnSearch"
@@ -105,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="Top Headlines"
+        android:text="@string/top_headlines"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -127,7 +129,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sort:"
+        android:text="@string/sort"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/spSortBy"
         app:layout_constraintHorizontal_bias="0.96"
@@ -160,7 +162,8 @@
         app:backgroundTint="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/white" />
+        app:tint="@color/white"
+        android:focusable="true" />
 
     <ProgressBar
         android:id="@+id/progressBar"

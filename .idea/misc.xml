@@ -13,7 +13,7 @@
         <entry key="app/src/main/res/layout/bottom_sheet_source_filter.xml" value="0.3734375" />
         <entry key="app/src/main/res/layout/fragment_news_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_news_list.xml" value="0.3028594970703125" />
-        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2989654541015625" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_loading.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/item_news_list.xml" value="0.3267618205370056" />
         <entry key="app/src/main/res/layout/item_news_source.xml" value="0.2510030110677084" />

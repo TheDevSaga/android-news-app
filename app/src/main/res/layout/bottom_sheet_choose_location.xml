@@ -20,8 +20,8 @@
         android:layout_height="wrap_content"
         android:paddingStart="16dp"
         android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:text="Choose your location"
+        android:paddingEnd="16dp"
+        android:text="@string/choose_your_location"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -33,9 +33,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:background="@color/grey"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp" />
+        />
 
     <RadioGroup
         android:id="@+id/rgCountry"
@@ -49,7 +47,7 @@
             android:id="@+id/rbIndia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="India"
+            android:text="@string/india"
             android:tag="in"
             />
 
@@ -57,7 +55,7 @@
             android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="USA"
+            android:text="@string/usa"
             android:tag="us"
             />
 
@@ -65,21 +63,21 @@
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Zealand"
+            android:text="@string/new_zealand"
             android:tag="nz"/>
 
         <RadioButton
             android:id="@+id/radioButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Switzerland"
+            android:text="@string/switzerland"
             android:tag="ch"/>
 
         <RadioButton
             android:id="@+id/radioButton5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Japan"
+            android:text="@string/japan"
             android:tag="jp"/>
     </RadioGroup>
 
@@ -92,5 +90,5 @@
         android:background="@color/background"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
-        android:text="Apply" />
+        android:text="@string/apply" />
 </LinearLayout>
